@@ -1,4 +1,3 @@
-
 // Capturar o elementos
 let inputNome = document.getElementById("regNome");
 let inputEmail = document.getElementById("regEmail");
@@ -8,28 +7,28 @@ let formRegistrar = document.getElementById("form-registrar");
 
 //
 const urlBase = "/api";
-const tratarResposta = async(response) => {
+const tratarResposta = async (response) => {
   switch (response.status) {
     case 201:
-    // capturar o token respondido pelo servidor 
-        let conteudo = await response.json();
-    //guardar o token na sessionStorage
-        sessionStorage.setItem('token', conteudo.token);
-        sessionStorage.setItem('usuario', JSON.stringify(conteudo.usuario));
-    //Carregar a index.html
-        location = 'index.html'
-    break;
+      // capturar o token respondido pelo servidor
+      let conteudo = await response.json();
+      //guardar o token na sessionStorage
+      sessionStorage.setItem("token", conteudo.token);
+      sessionStorage.setItem("usuario", JSON.stringify(conteudo.usuario));
+      //Carregar a index.html
+      location = "index.html";
+      break;
 
     case 409:
-        alert("Usuário já cadastrado")
+      alert("Usuário já cadastrado");
       break;
 
     case 422:
-        alert("Senha  preenchida incorretamente")
+      alert("Senha  preenchida incorretamente");
       break;
 
     default:
-        alert("Erro inesperado")
+      alert("Erro inesperado");
       break;
   }
 };
